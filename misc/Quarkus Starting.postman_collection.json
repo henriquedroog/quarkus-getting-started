@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "839b721e-9654-45cb-9187-1e3c998dabe4",
+		"name": "Quarkus Starting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Legumes",
+			"item": [
+				{
+					"name": "Get All Legumes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/legumes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"legumes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Legume",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Tomate\",\n\t\"description\": \"Acida tbm\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/legumes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"legumes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Legume",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "1"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/legumes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"legumes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Legumes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"description\": \"Vermelhinho\",\n        \"id\": 2,\n        \"name\": \"Tomate\"\n    }"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/legumes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"legumes"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Frutas",
+			"item": [
+				{
+					"name": "Get All Fruits",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/fruits",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fruits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Fruit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Mixirica\",\n\t\"description\": \"Acida tbm\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/fruits",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fruits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fruit",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "1"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/fruits",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fruits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"description\": \"Fibrosa\",\n        \"id\": 2,\n        \"name\": \"Laranja\"\n    }"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/fruits",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fruits"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "ebda11dd-d88b-43a0-a143-a5d810d8673d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "1a7c2c17-ef40-4ea6-95de-ad3a843adeb5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "fa48614c-8f0b-4826-972b-68c435c68c7a",
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
