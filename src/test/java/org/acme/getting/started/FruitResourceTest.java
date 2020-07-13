@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 @QuarkusTest
-@QuarkusTestResource(H2DatabaseTestResource.class)
+//@QuarkusTestResource(H2DatabaseTestResource.class)
 public class FruitResourceTest {
 
     private static final String fruitBaseUrl = "/fruits";
