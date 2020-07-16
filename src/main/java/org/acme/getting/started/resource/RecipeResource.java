@@ -1,7 +1,7 @@
 package org.acme.getting.started.resource;
 
-import org.acme.getting.started.model.Fruit;
-import org.acme.getting.started.service.FruitService;
+import org.acme.getting.started.model.Recipe;
+import org.acme.getting.started.service.RecipeService;
 
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
@@ -17,13 +17,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Set;
 
-@Path("/fruits")
+@Path("/recipes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class FruitResource {
+public class RecipeResource {
 
     @Inject
-    FruitService fruitService;
+    RecipeService recipeService;
 
     @Inject
     Validator validator;
@@ -31,16 +31,16 @@ public class FruitResource {
     @GET
     public Response list() {
         try {
-            return Response.ok(fruitService.getAll()).build();
+            return Response.ok(recipeService.getAll()).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Internal Server Error").build();
         }
     }
 
     @POST
-    public Response add(Fruit fruit) {
+    public Response add(Recipe recipe) {
         try {
-            Set<ConstraintViolation<Fruit>> violations = validator.validate(fruit);
+            Set<ConstraintViolation<Recipe>> violations = validator.validate(recipe);
             if(!violations.isEmpty()) {
                 return Response
                         .status(Response.Status.BAD_REQUEST)
@@ -48,21 +48,21 @@ public class FruitResource {
                         .build();
             }
 
-            fruitService.createFruit(fruit);
-            return Response.ok(fruitService.getAll()).build();
+            recipeService.createLegume(recipe);
+            return Response.ok(recipeService.getAll()).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Internal Server Error").build();
         }
     }
 
     @DELETE
-    public Response delete(Long fruitId) {
+    public Response delete(Long recipeId) {
         try{
-            if(fruitId == null)
+            if(recipeId == null)
                 return Response.status(Response.Status.BAD_REQUEST).entity("FruitId must not be null").build();
 
-            fruitService.delete(fruitId);
-            return Response.ok(fruitService.getAll()).build();
+            recipeService.delete(recipeId);
+            return Response.ok(recipeService.getAll()).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Internal Server Error").build();
         }
@@ -70,9 +70,9 @@ public class FruitResource {
     }
 
     @PUT
-    public Response update(Fruit fruit) {
+    public Response update(Recipe recipe) {
         try {
-            Set<ConstraintViolation<Fruit>> violations = validator.validate(fruit);
+            Set<ConstraintViolation<Recipe>> violations = validator.validate(recipe);
             if(!violations.isEmpty()) {
                 return Response
                         .status(Response.Status.BAD_REQUEST)
@@ -80,15 +80,8 @@ public class FruitResource {
                         .build();
             }
 
-            if(fruitService.findById(fruit.getId()) == null){
-                return Response
-                        .status(Response.Status.BAD_REQUEST)
-                        .entity("Fruit not found")
-                        .build();
-            }
-
-            fruitService.updateFruit(fruit);
-            return Response.ok(fruitService.getAll()).build();
+            recipeService.updateLegume(recipe);
+            return Response.ok(recipeService.getAll()).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Internal Server Error").build();
         }

@@ -1,28 +1,42 @@
 package org.acme.getting.started.model;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
+import org.neo4j.driver.types.Node;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @RegisterForReflection
 @Entity
-public class Legume {
+public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "legumeSeq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recipeSeq")
     private Long id;
-    public String name;
-    public String description;
+    @NotBlank(message = "Name may not be blank")
+    private String name;
+    @NotBlank(message = "Description may not be blank")
+    private String description;
 
-    public Legume() {
+    public static Recipe from(Node node) {
+        return new Recipe(node.id(), node.get("name").asString(), node.get("description").toString());
     }
 
-    public Legume(String name, String description) {
+    public Recipe() {
+    }
+
+    public Recipe(Long id, String name, String description) {
+        this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public Recipe(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public void setId(Long id) {

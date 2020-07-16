@@ -12,14 +12,20 @@ import javax.validation.constraints.NotBlank;
 @Entity
 public class Fruit {
 
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fruitSeq")
     private Long id;
-
     @NotBlank(message = "Name may not be blank")
-    public String name;
+    private String name;
     @NotBlank(message = "Description may not be blank")
-    public String description;
+    private String description;
 
     public Fruit() {
+    }
+
+    public Fruit(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
     }
 
     public Fruit(String name, String description) {
@@ -27,13 +33,12 @@ public class Fruit {
         this.description = description;
     }
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fruitSeq")
-    public Long getId() {
-        return id;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

@@ -81,6 +81,13 @@ public class LegumeResource {
                         .build();
             }
 
+            if(legumeService.findById(legume.getId()) == null){
+                return Response
+                        .status(Response.Status.BAD_REQUEST)
+                        .entity("Legume not found")
+                        .build();
+            }
+
             legumeService.updateLegume(legume);
             return Response.ok(legumeService.getAll()).build();
         } catch (Exception e) {
