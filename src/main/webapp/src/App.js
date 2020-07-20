@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from "react-redux";
@@ -7,8 +6,7 @@ import store from "./store/store";
 import Menu from "./commons/Menu";
 import{
   BrowserRouter as Router,
-  Link, Route, Switch, Redirect,
-  useHistory, useParams, useLocation } from "react-router-dom";
+  Route, Switch } from "react-router-dom";
 import Fruit from "./containers/Fruit";
 import Legume from "./containers/Legume";
 import Recipe from "./containers/Recipe";
