@@ -68,12 +68,10 @@ class Fruit extends React.Component {
     })
     .catch(console.log);
     this.handleModalToggle(true);
-    console.log(this.state.fruit);
   };
   
   render() {
     const { fruits, modalShow, fruit } = this.state;
-    console.log("frit on render: " + fruit);
     return (
       <Jumbotron>
         <AddFruitModal
